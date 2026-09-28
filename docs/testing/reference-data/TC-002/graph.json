@@ -1,0 +1,36 @@
+{
+  "relations": [
+    {
+      "type": "A+B",
+      "base": "push_reps",
+      "parts": [
+        "push_knees_reps"
+      ],
+      "stackOrder": [
+        "push_reps",
+        "push_knees_reps"
+      ]
+    },
+    {
+      "type": "A+B",
+      "base": "pull_reps",
+      "parts": [
+        "pull_rings_reps"
+      ],
+      "stackOrder": [
+        "pull_reps",
+        "pull_rings_reps"
+      ]
+    },
+    {
+      "type": "overlay",
+      "base": "push_reps",
+      "sub": "push_max_set"
+    },
+    {
+      "type": "overlay",
+      "base": "pull_reps",
+      "sub": "pull_max_set"
+    }
+  ]
+}

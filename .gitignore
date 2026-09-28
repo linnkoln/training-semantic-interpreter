@@ -1,0 +1,25 @@
+tools/d13-report.json
+data/test-artifacts/
+
+# Each installation owns its rules, graph, data and temporary state.
+/data/rulesLog*.json
+/data/rules.json
+/data/vocabulary*.json
+/data/graph*.json
+/data/data*.json
+/data/ui-state.json
+/data/training/
+/data/backups/
+/data/prompt-lab/
+/work/
+
+# Historical copies of personal runtime state stay local.
+/archive/*.json
+/archive/backup_*/
+
+.hermes/*
+!.hermes/skills/
+.hermes/skills/*
+!.hermes/skills/training-orchestrator/
+.hermes/skills/training-orchestrator/*
+!.hermes/skills/training-orchestrator/SKILL.md

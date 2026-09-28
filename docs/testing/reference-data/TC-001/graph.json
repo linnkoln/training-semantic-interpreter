@@ -1,0 +1,16 @@
+{
+  "relations": [
+    {
+      "type": "A+B",
+      "base": "push_reps",
+      "parts": ["push_knees_reps"],
+      "stackOrder": ["push_reps", "push_knees_reps"]
+    },
+    {
+      "type": "A+B",
+      "base": "pull_reps",
+      "parts": ["pull_rings_reps"],
+      "stackOrder": ["pull_reps", "pull_rings_reps"]
+    }
+  ]
+}

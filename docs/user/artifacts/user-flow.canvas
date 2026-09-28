@@ -1,0 +1,42 @@
+{
+	"nodes":[
+		{"id":"6310162a4d131925","type":"group","x":-480,"y":-440,"width":1640,"height":180,"label":"desission"},
+		{"id":"db88f172a89f97cd","type":"group","x":-480,"y":40,"width":1360,"height":200,"label":"passive"},
+		{"id":"2ecd9f75c81115c9","type":"group","x":-480,"y":-200,"width":1360,"height":180,"label":"action"},
+		{"id":"5d583491eb8f92b0","type":"group","x":-480,"y":-680,"width":1360,"height":180,"label":"System"},
+		{"id":"a0697a6d73a3af64","type":"group","x":1640,"y":-960,"width":940,"height":180,"label":"desission"},
+		{"id":"e6eb6b3fb97cc99d","type":"group","x":1640,"y":-760,"width":940,"height":180,"label":"action"},
+		{"id":"811b867c9169e31c","type":"group","x":1640,"y":-1160,"width":940,"height":180,"label":"System"},
+		{"id":"ad482b1a76bd1928","type":"group","x":1640,"y":40,"width":940,"height":180,"label":"action"},
+		{"id":"47089211bd1d6982","type":"group","x":1640,"y":-160,"width":940,"height":180,"label":"desission"},
+		{"id":"4adef89e39cbda28","type":"text","text":"Ждет результата, наблюдает за этапами","x":160,"y":60,"width":200,"height":140},
+		{"id":"043cd15724ab6ef7","type":"text","text":"нажимает на кнопку обработки","x":-160,"y":-180,"width":200,"height":120},
+		{"id":"bf7f8dadabfd951c","type":"text","text":"увидел результат","x":500,"y":-160,"width":250,"height":60},
+		{"id":"241edac96b525869","type":"text","text":"Система начинает обработку данных","x":160,"y":-640,"width":240,"height":100},
+		{"id":"283bbc48caa06457","type":"text","text":"Пользователь вводит данные","x":-460,"y":-180,"width":212,"height":109},
+		{"id":"30d9b631ccbb7b91","type":"text","text":"проверяет результат Визуализация его устроила?","x":880,"y":-400,"width":240,"height":100},
+		{"id":"2dea22590f47936e","type":"text","text":"ДА","x":1660,"y":-920,"width":240,"height":100},
+		{"id":"6675aa93607eca61","type":"text","text":"Ползователь жмет апрув","x":1974,"y":-721,"width":240,"height":100},
+		{"id":"307b2c2005cfb48d","type":"text","text":"Система показывает превиз данных. (json+визуализация)","x":500,"y":-640,"width":240,"height":100},
+		{"id":"e9237a5ca6855882","type":"text","text":"Сохраняйте всё, что должно было сохраниться. ","x":2280,"y":-1120,"width":280,"height":100},
+		{"id":"9e3bd1c6983534b2","type":"text","text":"нет","x":1660,"y":-120,"width":240,"height":100},
+		{"id":"8adf11f2fd686489","type":"text","text":"нажимает на кнопку обработки --> ","x":1980,"y":60,"width":200,"height":120},
+		{"id":"a3c9648429577677","type":"text","text":" ","x":80,"y":640,"width":200,"height":120}
+	],
+	"edges":[
+		{"id":"09b0f37ec82889d3","fromNode":"283bbc48caa06457","fromSide":"right","toNode":"043cd15724ab6ef7","toSide":"left"},
+		{"id":"526b2cc7fdcc3228","fromNode":"043cd15724ab6ef7","fromSide":"right","toNode":"4adef89e39cbda28","toSide":"left"},
+		{"id":"be0ecc605efc8db9","fromNode":"4adef89e39cbda28","fromSide":"right","toNode":"bf7f8dadabfd951c","toSide":"left"},
+		{"id":"a16381fe58548b21","fromNode":"bf7f8dadabfd951c","fromSide":"right","toNode":"30d9b631ccbb7b91","toSide":"left"},
+		{"id":"579cef8df86b83b2","fromNode":"043cd15724ab6ef7","fromSide":"right","toNode":"241edac96b525869","toSide":"left"},
+		{"id":"312c08bd061bdee7","fromNode":"6310162a4d131925","fromSide":"right","toNode":"a0697a6d73a3af64","toSide":"left"},
+		{"id":"1702efc35c204fa8","fromNode":"2dea22590f47936e","fromSide":"right","toNode":"6675aa93607eca61","toSide":"left"},
+		{"id":"63632bb6582e8c82","fromNode":"241edac96b525869","fromSide":"right","toNode":"307b2c2005cfb48d","toSide":"left"},
+		{"id":"dce33731993e97e0","fromNode":"307b2c2005cfb48d","fromSide":"bottom","toNode":"bf7f8dadabfd951c","toSide":"top"},
+		{"id":"3ca38e7cebd74f6e","fromNode":"6675aa93607eca61","fromSide":"right","toNode":"e9237a5ca6855882","toSide":"left"},
+		{"id":"6ff53fc0f5d6e0dd","fromNode":"6310162a4d131925","fromSide":"right","toNode":"47089211bd1d6982","toSide":"left"},
+		{"id":"1516821b237cd035","fromNode":"9e3bd1c6983534b2","fromSide":"right","toNode":"8adf11f2fd686489","toSide":"left"},
+		{"id":"139339cbb3fa0ddb","fromNode":"a3c9648429577677","fromSide":"left","toNode":"043cd15724ab6ef7","toSide":"bottom"},
+		{"id":"e6b59e85a6151834","fromNode":"8adf11f2fd686489","fromSide":"bottom","toNode":"a3c9648429577677","toSide":"right"}
+	]
+}

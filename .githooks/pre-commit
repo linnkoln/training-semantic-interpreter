@@ -1,0 +1,19 @@
+#!/bin/sh
+# pre-commit guard — защита инвариантов пользовательской логики (docs/REQUIREMENTS.md).
+# Запускается при каждом git commit (через core.hooksPath=.githooks). Красные тесты блокируют коммит.
+set -e
+cd "$(git rev-parse --show-toplevel)" || exit 1
+echo "🔒 guard: пользовательская логика — прогон тестов (INV-1..5, REQ/UX)..."
+if command -v npm >/dev/null 2>&1; then
+  npm run guard
+else
+  node --test 'tests/**/*.test.js'
+fi
+status=$?
+if [ $status -ne 0 ]; then
+  echo "❌ guard: тесты не прошли — коммит заблокирован (нарушены инварианты/требования)."
+  echo "   См. docs/REQUIREMENTS.md; исправь регрессию и коммить заново."
+  exit 1
+fi
+echo "✅ guard: OK"
+exit 0

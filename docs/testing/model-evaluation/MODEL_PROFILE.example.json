@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "status": "design-example-not-consumed-by-production-adapter",
+  "profileId": "qwen38-router-no-thinking-example",
+  "scope": "router-stage-only",
+  "transport": "ollama",
+  "endpoint": "http://localhost:11434/api/chat",
+  "modelId": "qwen3.8:27b",
+  "modelDigest": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
+  "quantization": "Q4_K_M",
+  "promptSet": "registered-baseline",
+  "stageOverrides": {
+    "router": {
+      "think": false,
+      "options": {
+        "temperature": 0,
+        "num_ctx": 8192,
+        "num_predict": 1024
+      }
+    }
+  },
+  "unconfiguredStages": "NOT_RUN",
+  "responseSchema": null,
+  "latencyTargetMs": null,
+  "qualificationRepeats": 3,
+  "notes": [
+    "This is the measured Router profile from 2026-09-26, not a qualified full-pipeline profile.",
+    "Declare an explicit model/template/runtime profile for every stage before a core comparison.",
+    "Effective server defaults and request settings must be captured per call."
+  ]
+}

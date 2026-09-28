@@ -1,0 +1,74 @@
+[
+  {
+    "date": "2026-07-21",
+    "values": {
+      "press_reps": 100,
+      "squat_reps": 100,
+      "push_reps": 100,
+      "running_distance_km": 10,
+      "push_max_set": 32,
+      "pull_reps": 50,
+      "pull_max_set": 6
+    }
+  },
+  {
+    "date": "2026-07-19",
+    "values": {
+      "press_reps": 100,
+      "squat_reps": 100,
+      "push_reps": 100,
+      "push_knees_reps": 0,
+      "running_distance_km": 10,
+      "pull_reps": 50,
+      "pull_rings_reps": 0
+    }
+  },
+  {
+    "date": "2026-07-17",
+    "values": {
+      "press_reps": 100,
+      "squat_reps": 100,
+      "push_reps": 100,
+      "push_knees_reps": 0,
+      "running_distance_km": 10,
+      "pull_reps": 36,
+      "pull_rings_reps": 14
+    }
+  },
+  {
+    "date": "2026-06-02",
+    "values": {
+      "press_reps": 50,
+      "squat_reps": 50,
+      "push_reps": 11,
+      "push_knees_reps": 39,
+      "running_distance_km": 5,
+      "pull_reps": 3,
+      "pull_rings_reps": 22
+    }
+  },
+  {
+    "date": "2026-05-31",
+    "values": {
+      "press_reps": 50,
+      "squat_reps": 50,
+      "push_reps": 10,
+      "push_knees_reps": 40,
+      "running_distance_km": 5,
+      "pull_reps": 3,
+      "pull_rings_reps": 22
+    }
+  },
+  {
+    "date": "2026-05-29",
+    "values": {
+      "press_reps": 50,
+      "squat_reps": 50,
+      "push_reps": 20,
+      "push_knees_reps": 30,
+      "running_distance_km": 5,
+      "pull_reps": 5,
+      "pull_rings_reps": 20
+    }
+  }
+]

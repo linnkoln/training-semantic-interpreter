@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-09-27",
+  "status": "source-registry-only-no-model-qualification-result",
+  "independentQualificationRepeats": 3,
+  "majorityVoteAllowed": false,
+  "latencyTargetMs": null,
+  "authoritySources": [
+    {
+      "path": "docs/user/artifacts/original-task.md",
+      "sha256": "9dd375db891b9f3c7c9c6ae01f2d2a44c6532fdbf59a15d692ede6d2307ba943"
+    },
+    {
+      "path": "docs/user/quotes.md",
+      "sha256": "8a753bfbd7f04cc39364227cd24e79aa00a8fc6103458628c71f990d52fae14e"
+    },
+    {
+      "path": "docs/user/chart-rendering-rules.md",
+      "sha256": "8f3129a0717d83dc327ef6b9acc86a5e7e4ffdc26b739f45087ddf42d0e88022"
+    },
+    {
+      "path": "docs/user/artifacts/architecture.canvas",
+      "sha256": "578e3d7edb6e2fa39a6b5a851fab07b0aab8233b471df0fe91e41b2e5e095d6d"
+    },
+    {
+      "path": "docs/GOVERNANCE.md",
+      "sha256": "ef83873b9bad0024e8f049a90b5ac9185760d02f6c36662d103fd76a7f514f60"
+    },
+    {
+      "path": "docs/testing/TESTING_PROTOCOL.md",
+      "sha256": "e9f858adcd9a23e078f8b3e51cf27248628d2d331f75b22a9b5b7e84bf6177e3"
+    },
+    {
+      "path": "docs/testing/reference-data/README.md",
+      "sha256": "4e89ddbdece83b06759e1ba873945851d2cbbb928220d421edcf127ea2007f7a"
+    }
+  ],
+  "baselinePrompts": [
+    {
+      "stageId": "cutter",
+      "path": "prompts/mode_cutter.md",
+      "sha256": "542f5aa9f974f58afa1e184147ffef34acf11e4d23f9ad968ebcdfdc2de49700"
+    },
+    {
+      "stageId": "router",
+      "path": "prompts/mode_router.md",
+      "sha256": "0dbacfa6d19b913c399c4883996197e38a78c27326aaab7b0a91ecf978e8ed07"
+    },
+    {
+      "stageId": "routerSession",
+      "path": "prompts/mode_routerSession.md",
+      "sha256": "3e6015e68bd467a24546597883997be83913ad8b425a4e52b046658a550fc272"
+    },
+    {
+      "stageId": "structured",
+      "path": "prompts/mode_parse.md",
+      "sha256": "8fe85de31c1a5928fdfe44401168a029242e594900615d26f51f19023675b8f3"
+    },
+    {
+      "stageId": "minorRuleUpdate",
+      "path": "prompts/mode_minorRuleUpdate.md",
+      "sha256": "56216aa265b78cb9f97a2c68a9179496e70c2aef19206da0e481ec0ae9b56b09"
+    },
+    {
+      "stageId": "ruleUpdate",
+      "path": "prompts/mode_ruleUpdate.md",
+      "sha256": "18ff567d40065b4ae81e7b2d614758b07497afa1258bf1d9a65a46cfc6a36e90"
+    }
+  ],
+  "heldOutCases": [],
+  "stageSnapshots": {
+    "status": "NOT_PREPARED",
+    "note": "Reference-derived per-stage snapshots must be exported and verified before isolated stage qualification."
+  },
+  "cases": [
+    {
+      "caseId": "TC-001",
+      "partition": "regression-development-anchor",
+      "input": {
+        "source": {
+          "path": "docs/testing/cases/TC-001-empty-rules-table/TC-001-evidence.json",
+          "sha256": "84db31a08203d91bd01e38d756df0e58ef806db8cc918bc069c631e8d4c18931"
+        },
+        "selector": "/input",
+        "textSha256": "67f5c477e914e32a45d72ccb332701ee304d8e5da5e17d401b9eee625ac7c38c",
+        "note": "Only raw input is used; historical outputs and initialRules are not the oracle."
+      },
+      "spec": {
+        "path": "docs/testing/cases/TC-001-empty-rules-table/TC-001-spec.canvas",
+        "sha256": "9f2647d9bd3e92938399692771ac8c447c74ecb08f5853663789b7f86171397a"
+      },
+      "processingDates": [
+        "2026-05-29",
+        "2026-05-31",
+        "2026-06-02"
+      ],
+      "expectedRouterGroups": [
+        3,
+        2,
+        1
+      ],
+      "initialState": {
+        "directory": "docs/testing/fixtures/TC-001-empty-state",
+        "checksumsPath": "docs/testing/fixtures/TC-001-empty-state/SHA256SUMS",
+        "files": [
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/data.json",
+            "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/data.tmp.json",
+            "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/rulesLog.json",
+            "sha256": "e1095bab5e6ca59b7c8d3fa2b164bfe7f831c9eb6c81a66bff22811276e35d99"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/rulesLog.tmp.json",
+            "sha256": "e1095bab5e6ca59b7c8d3fa2b164bfe7f831c9eb6c81a66bff22811276e35d99"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/graph.json",
+            "sha256": "d0bfbe7d404dc0cdae997ba38f724e123db17aba406afce3a9ccd14266822cad"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/graph.tmp.json",
+            "sha256": "d0bfbe7d404dc0cdae997ba38f724e123db17aba406afce3a9ccd14266822cad"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/SHA256SUMS",
+            "sha256": "1ff02eb9b0104a5929381837c436b404396baad6846eb96aa32c6f9a85c35431"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-001-empty-state/README.md",
+            "sha256": "0e5c69c7852e7b14ae55ed8618437959770df833aad98cae91d4cd188cdad0d2"
+          }
+        ],
+        "adapterRequired": "Canonical fixture rulesLog uses rules array; convert in scratch storage to the current core representation without modifying sources."
+      },
+      "oracle": {
+        "directory": "docs/testing/reference-data/TC-001",
+        "scope": "Complete expected files after isolated Save; preview must be checked against its own contract.",
+        "files": [
+          {
+            "path": "docs/testing/reference-data/TC-001/data.json",
+            "sha256": "7dd6dbefda1466453517b11585800a239ad8a5324b9a07aa678dd3da587b66aa"
+          },
+          {
+            "path": "docs/testing/reference-data/TC-001/rulesLog.json",
+            "sha256": "76bb47e797e02b02b31d1585cbd42a33620b4a2b725199ca077f6564cd5fee31"
+          },
+          {
+            "path": "docs/testing/reference-data/TC-001/graph.json",
+            "sha256": "d6a50647b8ec7e956ec5a2d3e1649a145aa65ded5003fdadc826f0acc3379184"
+          }
+        ],
+        "timestampPolicySource": "docs/testing/reference-data/README.md"
+      },
+      "independentQualificationRepeats": 3,
+      "expectedCutterDays": [
+        {
+          "raw": "*05-29*\n- 50 пресс\n- 50 присяд\n- 50 отжимания (+из них около 30 с колен(20+30))\n~5км\n- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))",
+          "date": "05-29"
+        },
+        {
+          "raw": "*05-31*\nкорпус и выше болит и клининт НО\n- 50 пресс\n- 50 присяд\n- 50 отжимания (10+40)\n~5км\n- 25 подтягивания (3 + 22)",
+          "date": "05-31"
+        },
+        {
+          "raw": "*06-02*\n- 50 пресс\n- 50 присяд\n- 50 отжимания (11+39)\n~5км\n- 25 подтягивания (3 + 22)",
+          "date": "06-02"
+        }
+      ],
+      "cutterOracleProvenance": "Reference-derived snapshot of the three known anchor table cells; HTML br maps to newline. Used only as test oracle, never as product recognizer."
+    },
+    {
+      "caseId": "TC-002",
+      "partition": "regression-development-anchor",
+      "input": {
+        "source": {
+          "path": "docs/testing/cases/TC-002-max-approaches/TC-002-evidence.json",
+          "sha256": "eb7d48d97193766a16b6c5aa882f80c9ed35280f014bbcc1dca8bd5249ba2ed6"
+        },
+        "selector": "/input",
+        "textSha256": "600f0bc923cf17049ce3e0d7096f457a65f5a64fe078c3965027ffc36889c78a",
+        "note": "Only raw input is used; historical outputs and initialRules are not the oracle."
+      },
+      "spec": {
+        "path": "docs/testing/cases/TC-002-max-approaches/TC-002-spec.canvas",
+        "sha256": "ee09d5eb4d2461efc2fe7c125666008de2dd7259191a641a9580b3b5cd3ec1c6"
+      },
+      "processingDates": [
+        "2026-07-17",
+        "2026-07-19",
+        "2026-07-21"
+      ],
+      "expectedRouterGroups": [
+        1,
+        1,
+        3
+      ],
+      "initialState": {
+        "directory": "docs/testing/fixtures/TC-002-after-TC-001",
+        "checksumsPath": "docs/testing/fixtures/TC-002-after-TC-001/SHA256SUMS",
+        "files": [
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/data.json",
+            "sha256": "7dd6dbefda1466453517b11585800a239ad8a5324b9a07aa678dd3da587b66aa"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/data.tmp.json",
+            "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/rulesLog.json",
+            "sha256": "76bb47e797e02b02b31d1585cbd42a33620b4a2b725199ca077f6564cd5fee31"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/rulesLog.tmp.json",
+            "sha256": "e1095bab5e6ca59b7c8d3fa2b164bfe7f831c9eb6c81a66bff22811276e35d99"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/graph.json",
+            "sha256": "d6a50647b8ec7e956ec5a2d3e1649a145aa65ded5003fdadc826f0acc3379184"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/graph.tmp.json",
+            "sha256": "d0bfbe7d404dc0cdae997ba38f724e123db17aba406afce3a9ccd14266822cad"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/SHA256SUMS",
+            "sha256": "3859c834907f128e1ff4e77e0647834d1aa0b9d16599c4ac5e7b83be03716beb"
+          },
+          {
+            "path": "docs/testing/fixtures/TC-002-after-TC-001/README.md",
+            "sha256": "7d55e63e15a4d877227b42fb026868aa2db923dd58c62064c74c0446dbbd0353"
+          }
+        ],
+        "adapterRequired": "Canonical fixture rulesLog uses rules array; convert in scratch storage to the current core representation without modifying sources."
+      },
+      "oracle": {
+        "directory": "docs/testing/reference-data/TC-002",
+        "scope": "Complete expected files after isolated Save; preview must be checked against its own contract.",
+        "files": [
+          {
+            "path": "docs/testing/reference-data/TC-002/data.json",
+            "sha256": "81351afbcf72a63bf8b2470e773bda8ad51851b0ab4bd13510f650ef70ede953"
+          },
+          {
+            "path": "docs/testing/reference-data/TC-002/rulesLog.json",
+            "sha256": "e81d970ce2080675d20f6db1f20a287db63a4155b9c8492db4fe63f5a921caf4"
+          },
+          {
+            "path": "docs/testing/reference-data/TC-002/graph.json",
+            "sha256": "29c85c2a7dbae0a86dcbb1330e809f76eddbea2e94c6a282d15c43dd1bbd08a0"
+          }
+        ],
+        "timestampPolicySource": "docs/testing/reference-data/README.md"
+      },
+      "independentQualificationRepeats": 3,
+      "expectedCutterDays": [
+        {
+          "raw": "*07-17*\n- 100 пресс\n- 100 присяд\n- 100 отжимания (100+0)\n~10км\n- 50 подтягивания (36+14)",
+          "date": "07-17"
+        },
+        {
+          "raw": "*07-19*\n- 100 пресс\n- 100 присяд\n- 100 отжимания (100+0)\n~10км\n- 50 подтягивания (50+0)",
+          "date": "07-19"
+        },
+        {
+          "raw": "*07-21*\n- 100 пресс\n- 100 присяд\n- 100 отжимания (макс подход: 32)\n~10км\n- 50 подтягивания макс: 6",
+          "date": "07-21"
+        }
+      ],
+      "cutterOracleProvenance": "Reference-derived snapshot of the three known anchor table cells; HTML br maps to newline. Used only as test oracle, never as product recognizer."
+    }
+  ],
+  "snapshotNotes": "Reviewed architecture and general testing protocol changes concern temp recovery/UI. Anchor inputs, fixtures, oracles and baseline prompts are unchanged. Previous registry retained under work/model-eval-registry-2026-09-27."
+}

@@ -1,0 +1,601 @@
+{
+  "caseId": "TC-001",
+  "runId": "TC-001-run-011",
+  "executedAt": "2026-09-23T04:12:52.754Z",
+  "runtime": {
+    "endpoint": "local Ollama-compatible API (localhost:11434)",
+    "modelId": "gemma4",
+    "underlyingModelRevision": "not reported by the endpoint"
+  },
+  "promptVersions": {
+    "cutter": "1",
+    "router": "22",
+    "ruleUpdate": "4",
+    "structured": "4"
+  },
+  "input": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+  "initialRules": "rulesLog v2 with empty dynamic/global rules",
+  "llmCalls": [
+    {
+      "index": 0,
+      "stage": "cutter",
+      "model": "gemma4",
+      "promptVersion": "1",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"days\": [\n      { \"raw\": \"*05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))\", \"date\": \"05-29\" },\n      { \"raw\": \"*05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22)\", \"date\": \"05-31\" },\n      { \"raw\": \"*06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22)\", \"date\": \"06-02\" }\n    ]\n  },\n  \"confidence\": 1.0\n}\n```"
+    },
+    {
+      "index": 1,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "22",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*05-29*\\n- 50 пресс\\n- 50 присяд\\n- 50 отжимания (+из них около 30 с колен(20+30))\\n~5км\\n- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))\",\n        \"group\": 3,\n        \"ruleId\": null,\n        \"reasoning\": \"Список правил пуст, что по правилам всегда влечет выбор Группы 3.\",\n        \"confidence\": 1.0\n      }\n    ]\n  },\n  \"confidence\": 1.0\n}\n```"
+    },
+    {
+      "index": 2,
+      "stage": "ruleUpdate",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"updateRuleId\": null,\n    \"rule\": {\n      \"keys\": [\n        {\n          \"key\": \"press_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"пресс, повторения\"\n        },\n        {\n          \"key\": \"squat_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"присяд, повторения\"\n        },\n        {\n          \"key\": \"push_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"отжимания, стандартные повторения\"\n        },\n        {\n          \"key\": \"push_knees_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"отжимания с колен, повторения\"\n        },\n        {\n          \"key\": \"running_distance_km\",\n          \"role\": \"stack\",\n          \"meaning\": \"бег, дистанция в км\"\n        },\n        {\n          \"key\": \"pull_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"подтягивания, базовые повторения\"\n        },\n        {\n          \"key\": \"pull_rings_reps\",\n          \"role\": \"stack\",\n          \"meaning\": \"подтягивания на кольцах, повторения\"\n        }\n      ],\n      \"composition\": \"A+B\"\n    },\n    \"oldKeysEvents\": [],\n    \"newKeys\": [\n      {\n        \"key\": \"press_reps\",\n        \"meaning\": \"пресс, повторения\",\n        \"chunk\": \"- 50 пресс\",\n        \"values\": {\n          \"press_reps\": 50\n        }\n      },\n      {\n        \"key\": \"squat_reps\",\n        \"meaning\": \"присяд, повторения\",\n        \"chunk\": \"- 50 присяд\",\n        \"values\": {\n          \"squat_reps\": 50\n        }\n      },\n      {\n        \"key\": \"push_reps\",\n        \"meaning\": \"отжимания, стандартные повторения\",\n        \"chunk\": \"- 50 отжимания (+из них около 30 с колен(20+30))\",\n        \"values\": {\n          \"push_reps\": 20\n        }\n      },\n      {\n        \"key\": \"push_knees_reps\",\n        \"meaning\": \"отжимания с колен, повторения\",\n        \"chunk\": \"- 50 отжимания (+из них около 30 с колен(20+30))\",\n        \"values\": {\n          \"push_knees_reps\": 30\n        }\n      },\n      {\n        \"key\": \"running_distance_km\",\n        \"meaning\": \"бег, дистанция в км\",\n        \"chunk\": \"~5км\",\n        \"values\": {\n          \"running_distance_km\": 5\n        }\n      },\n      {\n        \"key\": \"pull_reps\",\n        \"meaning\": \"подтягивания, базовые повторения\",\n        \"chunk\": \"- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))\",\n        \"values\": {\n          \"pull_reps\": 5\n        }\n      },\n      {\n        \"key\": \"pull_rings_reps\",\n        \"meaning\": \"подтягивания на кольцах, повторения\",\n        \"chunk\": \"- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))\",\n        \"values\": {\n          \"pull_rings_reps\": 20\n        }\n      }\n    ],\n    \"relations\": [\n      {\n        \"type\": \"A+B\",\n        \"base\": \"push_reps\",\n        \"parts\": [\n          \"push_knees_reps\"\n        ],\n        \"stackOrder\": [\n          \"push_reps\",\n          \"push_knees_reps\"\n        ]\n      },\n      {\n        \"type\": \"A+B\",\n        \"base\": \"pull_reps\",\n        \"parts\": [\n          \"pull_rings_reps\"\n        ],\n        \"stackOrder\": [\n          \"pull_reps\",\n          \"pull_rings_reps\"\n        ]\n      }\n    ],\n    \"confidence\": 0.98\n  },\n  \"confidence\": 0.98\n}\n```"
+    },
+    {
+      "index": 3,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "22",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*05-31*\\nкорпус и выше болит и клининт НО\\n- 50 пресс\\n- 50 присяд\\n- 50 отжимания (10+40)\\n~5км\\n- 25 подтягивания (3 + 22)\",\n        \"group\": 2,\n        \"ruleId\": \"tmp_rule_001\",\n        \"reasoning\": \"Большинство измерений (пресс, присяд, бег) соответствуют существующим ключам и примерам. Однако структура разделения повторений для отжиманий (10+40) и подтягиваний (3 + 22) использует простой численный формат (A+B), который не представлен явно в примерах правил, что требует выбора группы 2, несмотря на использование существующих ключей.\",\n        \"confidence\": 0.9\n      }\n    ]\n  },\n  \"confidence\": 0.9\n}\n```"
+    },
+    {
+      "index": 4,
+      "stage": "minorRuleUpdate",
+      "model": "gemma4",
+      "promptVersion": "",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"appends\": [\n      {\n        \"key\": \"push_reps\",\n        \"chunk\": \"- 50 отжимания (10+40)\",\n        \"exampleText\": \"- 50 отжимания (10+40)\",\n        \"confidence\": 0.95\n      },\n      {\n        \"key\": \"pull_reps\",\n        \"chunk\": \"- 25 подтягивания (3 + 22)\",\n        \"exampleText\": \"- 25 подтягивания (3 + 22)\",\n        \"confidence\": 0.95\n      }\n    ],\n    \"confidence\": 0.9\n  }\n}\n```"
+    },
+    {
+      "index": 5,
+      "stage": "structured",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": [\n    {\n      \"date\": \"2026-05-31\",\n      \"values\": {\n        \"press_reps\": 50,\n        \"squat_reps\": 50,\n        \"push_reps\": 10,\n        \"push_knees_reps\": 40,\n        \"running_distance_km\": 5,\n        \"pull_reps\": 3,\n        \"pull_rings_reps\": 22\n      }\n    }\n  ],\n  \"roles\": {\n    \"push_reps\": \"stack\",\n    \"push_knees_reps\": \"overlay\",\n    \"pull_reps\": \"stack\",\n    \"pull_rings_reps\": \"overlay\"\n  },\n  \"confidence\": 0.98\n}\n```"
+    },
+    {
+      "index": 6,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "22",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*06-02*\\n- 50 пресс\\n- 50 присяд\\n- 50 отжимания (11+39)\\n~5км\\n- 25 подтягивания (3 + 22)\",\n        \"group\": 1,\n        \"ruleId\": \"tmp_rule_001\",\n        \"reasoning\": \"Все упражнения (пресс, присяд, отжимания, бег, подтягивания) соответствуют ключам и базовому формату, представленному в правиле tmp_rule_001. Несмотря на упрощенное числовое представление разделения повторений (11+39), структура и смысл измерений полностью соответствуют контексту правила, позволяя выбрать Группу 1.\",\n        \"confidence\": 0.98\n      }\n    ]\n  },\n  \"confidence\": 0.98\n}\n```"
+    },
+    {
+      "index": 7,
+      "stage": "structured",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": [\n    {\n      \"date\": \"2026-06-02\",\n      \"values\": {\n        \"press_reps\": 50,\n        \"squat_reps\": 50,\n        \"push_reps\": 11,\n        \"push_knees_reps\": 39,\n        \"running_distance_km\": 5,\n        \"pull_reps\": 3,\n        \"pull_rings_reps\": 22\n      }\n    }\n  ],\n  \"roles\": {\n    \"push_reps\": \"stack\",\n    \"push_knees_reps\": \"overlay\",\n    \"pull_reps\": \"stack\",\n    \"pull_rings_reps\": \"overlay\"\n  },\n  \"confidence\": 0.98\n}\n```"
+    }
+  ],
+  "preview": {
+    "status": "success",
+    "branch": 1,
+    "payload": {
+      "groups": [
+        {
+          "chunk": "*05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))",
+          "group": 3
+        },
+        {
+          "chunk": "*05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22)",
+          "group": 2
+        },
+        {
+          "chunk": "*06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22)",
+          "group": 1
+        }
+      ],
+      "minorChunks": [
+        "*05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22)"
+      ],
+      "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+      "newKeys": [],
+      "events": [
+        {
+          "date": "2026-05-29",
+          "values": {
+            "press_reps": 50,
+            "squat_reps": 50,
+            "push_reps": 20,
+            "push_knees_reps": 30,
+            "running_distance_km": 5,
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          },
+          "interpretation_version": 3,
+          "createdAt": "2026-09-23T04:11:52.403Z"
+        },
+        {
+          "date": "2026-05-31",
+          "values": {
+            "press_reps": 50,
+            "squat_reps": 50,
+            "push_reps": 10,
+            "push_knees_reps": 40,
+            "running_distance_km": 5,
+            "pull_reps": 3,
+            "pull_rings_reps": 22
+          },
+          "interpretation_version": 2,
+          "createdAt": "2026-09-23T04:12:28.802Z"
+        },
+        {
+          "date": "2026-06-02",
+          "values": {
+            "press_reps": 50,
+            "squat_reps": 50,
+            "push_reps": 11,
+            "push_knees_reps": 39,
+            "running_distance_km": 5,
+            "pull_reps": 3,
+            "pull_rings_reps": 22
+          },
+          "interpretation_version": 2,
+          "createdAt": "2026-09-23T04:12:52.746Z"
+        }
+      ],
+      "rule": {
+        "id": "rule_001",
+        "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+        "mapping": {
+          "press_reps": "пресс, повторения",
+          "squat_reps": "присяд, повторения",
+          "push_reps": "отжимания, стандартные повторения",
+          "push_knees_reps": "отжимания с колен, повторения",
+          "running_distance_km": "бег, дистанция в км",
+          "pull_reps": "подтягивания, базовые повторения",
+          "pull_rings_reps": "подтягивания на кольцах, повторения"
+        },
+        "examples": [
+          {
+            "input": "- 50 пресс",
+            "values": {
+              "press_reps": 50
+            }
+          },
+          {
+            "input": "- 50 присяд",
+            "values": {
+              "squat_reps": 50
+            }
+          },
+          {
+            "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+            "values": {
+              "push_reps": 20,
+              "push_knees_reps": 30
+            }
+          },
+          {
+            "input": "~5км",
+            "values": {
+              "running_distance_km": 5
+            }
+          },
+          {
+            "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+            "values": {
+              "pull_reps": 5,
+              "pull_rings_reps": 20
+            }
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "rule_001",
+          "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+          "mapping": {
+            "press_reps": "пресс, повторения",
+            "squat_reps": "присяд, повторения",
+            "push_reps": "отжимания, стандартные повторения",
+            "push_knees_reps": "отжимания с колен, повторения",
+            "running_distance_km": "бег, дистанция в км",
+            "pull_reps": "подтягивания, базовые повторения",
+            "pull_rings_reps": "подтягивания на кольцах, повторения"
+          },
+          "examples": [
+            {
+              "input": "- 50 пресс",
+              "values": {
+                "press_reps": 50
+              }
+            },
+            {
+              "input": "- 50 присяд",
+              "values": {
+                "squat_reps": 50
+              }
+            },
+            {
+              "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+              "values": {
+                "push_reps": 20,
+                "push_knees_reps": 30
+              }
+            },
+            {
+              "input": "~5км",
+              "values": {
+                "running_distance_km": 5
+              }
+            },
+            {
+              "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+              "values": {
+                "pull_reps": 5,
+                "pull_rings_reps": 20
+              }
+            }
+          ]
+        }
+      ],
+      "exampleEvents": [
+        {
+          "date": "2026-05-29",
+          "values": {
+            "press_reps": 50,
+            "squat_reps": 50,
+            "push_reps": 20,
+            "push_knees_reps": 30,
+            "running_distance_km": 5,
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          },
+          "interpretation_version": 3,
+          "createdAt": "2026-09-23T04:11:52.403Z"
+        }
+      ],
+      "proposal": {
+        "rules": [
+          {
+            "id": "rule_001",
+            "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+            "mapping": {
+              "press_reps": "пресс, повторения",
+              "squat_reps": "присяд, повторения",
+              "push_reps": "отжимания, стандартные повторения",
+              "push_knees_reps": "отжимания с колен, повторения",
+              "running_distance_km": "бег, дистанция в км",
+              "pull_reps": "подтягивания, базовые повторения",
+              "pull_rings_reps": "подтягивания на кольцах, повторения"
+            },
+            "examples": [
+              {
+                "input": "- 50 пресс",
+                "values": {
+                  "press_reps": 50
+                }
+              },
+              {
+                "input": "- 50 присяд",
+                "values": {
+                  "squat_reps": 50
+                }
+              },
+              {
+                "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+                "values": {
+                  "push_reps": 20,
+                  "push_knees_reps": 30
+                }
+              },
+              {
+                "input": "~5км",
+                "values": {
+                  "running_distance_km": 5
+                }
+              },
+              {
+                "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+                "values": {
+                  "pull_reps": 5,
+                  "pull_rings_reps": 20
+                }
+              }
+            ]
+          }
+        ],
+        "rule": {
+          "id": "rule_001",
+          "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+          "mapping": {
+            "press_reps": "пресс, повторения",
+            "squat_reps": "присяд, повторения",
+            "push_reps": "отжимания, стандартные повторения",
+            "push_knees_reps": "отжимания с колен, повторения",
+            "running_distance_km": "бег, дистанция в км",
+            "pull_reps": "подтягивания, базовые повторения",
+            "pull_rings_reps": "подтягивания на кольцах, повторения"
+          },
+          "examples": [
+            {
+              "input": "- 50 пресс",
+              "values": {
+                "press_reps": 50
+              }
+            },
+            {
+              "input": "- 50 присяд",
+              "values": {
+                "squat_reps": 50
+              }
+            },
+            {
+              "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+              "values": {
+                "push_reps": 20,
+                "push_knees_reps": 30
+              }
+            },
+            {
+              "input": "~5км",
+              "values": {
+                "running_distance_km": 5
+              }
+            },
+            {
+              "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+              "values": {
+                "pull_reps": 5,
+                "pull_rings_reps": 20
+              }
+            }
+          ]
+        },
+        "exampleEvents": [
+          {
+            "date": "2026-05-29",
+            "values": {
+              "press_reps": 50,
+              "squat_reps": 50,
+              "push_reps": 20,
+              "push_knees_reps": 30,
+              "running_distance_km": 5,
+              "pull_reps": 5,
+              "pull_rings_reps": 20
+            },
+            "interpretation_version": 3,
+            "createdAt": "2026-09-23T04:11:52.403Z"
+          }
+        ],
+        "oldKeysEvents": [],
+        "oldChunks": [],
+        "newKeys": [
+          {
+            "key": "press_reps",
+            "meaning": "пресс, повторения",
+            "chunk": "- 50 пресс",
+            "values": {
+              "press_reps": 50
+            }
+          },
+          {
+            "key": "squat_reps",
+            "meaning": "присяд, повторения",
+            "chunk": "- 50 присяд",
+            "values": {
+              "squat_reps": 50
+            }
+          },
+          {
+            "key": "push_reps",
+            "meaning": "отжимания, стандартные повторения",
+            "chunk": "- 50 отжимания (+из них около 30 с колен(20+30))",
+            "values": {
+              "push_reps": 20
+            }
+          },
+          {
+            "key": "push_knees_reps",
+            "meaning": "отжимания с колен, повторения",
+            "chunk": "- 50 отжимания (+из них около 30 с колен(20+30))",
+            "values": {
+              "push_knees_reps": 30
+            }
+          },
+          {
+            "key": "running_distance_km",
+            "meaning": "бег, дистанция в км",
+            "chunk": "~5км",
+            "values": {
+              "running_distance_km": 5
+            }
+          },
+          {
+            "key": "pull_reps",
+            "meaning": "подтягивания, базовые повторения",
+            "chunk": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+            "values": {
+              "pull_reps": 5
+            }
+          },
+          {
+            "key": "pull_rings_reps",
+            "meaning": "подтягивания на кольцах, повторения",
+            "chunk": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+            "values": {
+              "pull_rings_reps": 20
+            }
+          }
+        ],
+        "relations": [
+          {
+            "type": "A+B",
+            "base": "push_reps",
+            "parts": [
+              "push_knees_reps"
+            ],
+            "stackOrder": [
+              "push_reps",
+              "push_knees_reps"
+            ]
+          },
+          {
+            "type": "A+B",
+            "base": "pull_reps",
+            "parts": [
+              "pull_rings_reps"
+            ],
+            "stackOrder": [
+              "pull_reps",
+              "pull_rings_reps"
+            ]
+          }
+        ],
+        "updateRuleId": null
+      },
+      "appends": [
+        {
+          "key": "push_reps",
+          "chunk": "- 50 отжимания (10+40)",
+          "exampleText": "- 50 отжимания (10+40)",
+          "confidence": 0.95,
+          "date": "05-31"
+        },
+        {
+          "key": "pull_reps",
+          "chunk": "- 25 подтягивания (3 + 22)",
+          "exampleText": "- 25 подтягивания (3 + 22)",
+          "confidence": 0.95,
+          "date": "05-31"
+        }
+      ],
+      "relations": [
+        {
+          "type": "A+B",
+          "base": "push_reps",
+          "parts": [
+            "push_knees_reps"
+          ],
+          "stackOrder": [
+            "push_reps",
+            "push_knees_reps"
+          ]
+        },
+        {
+          "type": "A+B",
+          "base": "pull_reps",
+          "parts": [
+            "pull_rings_reps"
+          ],
+          "stackOrder": [
+            "pull_reps",
+            "pull_rings_reps"
+          ]
+        }
+      ],
+      "_traceId": "trace-1790136677664"
+    },
+    "confidence": 0.98
+  },
+  "saveVerification": {
+    "status": "success",
+    "logVersion": 3,
+    "rule": {
+      "id": "rule_001",
+      "raw": "| *05-29*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (+из них около 30 с колен(20+30))<br>~5км<br>- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)) | *05-31*<br>корпус и выше болит и клининт НО<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (10+40)<br>~5км<br>- 25 подтягивания (3 + 22) | *06-02*<br>- 50 пресс<br>- 50 присяд<br>- 50 отжимания (11+39)<br>~5км<br>- 25 подтягивания (3 + 22) |",
+      "mapping": {
+        "press_reps": "пресс, повторения",
+        "squat_reps": "присяд, повторения",
+        "push_reps": "отжимания, стандартные повторения",
+        "push_knees_reps": "отжимания с колен, повторения",
+        "running_distance_km": "бег, дистанция в км",
+        "pull_reps": "подтягивания, базовые повторения",
+        "pull_rings_reps": "подтягивания на кольцах, повторения"
+      },
+      "examples": [
+        {
+          "input": "- 50 пресс",
+          "values": {
+            "press_reps": 50
+          }
+        },
+        {
+          "input": "- 50 присяд",
+          "values": {
+            "squat_reps": 50
+          }
+        },
+        {
+          "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+          "values": {
+            "push_reps": 20,
+            "push_knees_reps": 30
+          }
+        },
+        {
+          "input": "~5км",
+          "values": {
+            "running_distance_km": 5
+          }
+        },
+        {
+          "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+          "values": {
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          }
+        },
+        {
+          "input": "- 50 отжимания (10+40)",
+          "values": {
+            "push_reps": 10,
+            "push_knees_reps": 40
+          }
+        },
+        {
+          "input": "- 25 подтягивания (3 + 22)",
+          "values": {
+            "pull_reps": 3,
+            "pull_rings_reps": 22
+          }
+        }
+      ],
+      "__version": 1
+    },
+    "graph": {
+      "relations": [
+        {
+          "type": "A+B",
+          "base": "push_reps",
+          "parts": [
+            "push_knees_reps"
+          ],
+          "stackOrder": [
+            "push_reps",
+            "push_knees_reps"
+          ]
+        },
+        {
+          "type": "A+B",
+          "base": "pull_reps",
+          "parts": [
+            "pull_rings_reps"
+          ],
+          "stackOrder": [
+            "pull_reps",
+            "pull_rings_reps"
+          ]
+        }
+      ],
+      "targets": [],
+      "trends": []
+    },
+    "rulesTmpAfterUiClear": {
+      "newKeys": []
+    },
+    "graphTmpAfterUiClear": {
+      "relations": [],
+      "targets": [],
+      "trends": []
+    },
+    "note": "Node sandbox; main files and the UI post-save temporary clear were verified in an isolated copy, not in a live Obsidian vault."
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"nodes":[
+		{"id":"5369b445e29cbdfd","type":"text","text":"## Пример отрисовка","x":-360,"y":-700,"width":540,"height":100},
+		{"id":"6ac8fdc7d0ae8d4e","type":"text","text":"# На этапе создания новых правил ","x":-840,"y":-860,"width":440,"height":160},
+		{"id":"4d692698a2b89922","type":"text","text":"Создаются temp файлы всех элементов учавствующих в отрисовке\n- `graph.json`\n- `rulesLog.json`\n- ","x":220,"y":-580,"width":540,"height":200}
+	],
+	"edges":[]
+}

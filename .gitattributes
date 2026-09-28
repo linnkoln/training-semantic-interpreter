@@ -1,0 +1,11 @@
+# Snapshot checksums and Canvas oracles depend on their exact line endings.
+docs/user/** -text
+docs/user/quotes.md -diff
+docs/GOVERNANCE.md -text
+docs/testing/TESTING_PROTOCOL.md -text
+docs/testing/fixtures/** -text -diff
+docs/testing/reference-data/** -text -diff
+docs/testing/cases/** -text
+docs/testing/cases/*/*-evidence.json -diff
+prompts/** -text
+prompts/mode_parse.md -diff

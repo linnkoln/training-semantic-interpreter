@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "scope": "core-preview-and-isolated-serialization",
+  "repeats": 3,
+  "caseIds": ["TC-001", "TC-002"],
+  "workerTimeoutMs": 900000,
+  "latencyTargetMs": null,
+  "profiles": [
+    {
+      "id": "gemma4-thinking",
+      "model": "gemma4:latest",
+      "endpoint": "http://localhost:11434/api/chat",
+      "think": true,
+      "options": { "temperature": 0, "num_ctx": 16384, "num_predict": 8192 },
+      "keepAlive": "10m",
+      "timeoutMs": 180000
+    },
+    {
+      "id": "qwen38-thinking",
+      "model": "qwen3.8:27b",
+      "endpoint": "http://localhost:11434/api/chat",
+      "think": true,
+      "options": { "temperature": 0, "num_ctx": 16384, "num_predict": 8192 },
+      "keepAlive": "10m",
+      "timeoutMs": 180000
+    },
+    {
+      "id": "qwen38-no-thinking",
+      "model": "qwen3.8:27b",
+      "endpoint": "http://localhost:11434/api/chat",
+      "think": false,
+      "options": { "temperature": 0, "num_ctx": 16384, "num_predict": 8192 },
+      "keepAlive": "10m",
+      "timeoutMs": 180000
+    }
+  ]
+}

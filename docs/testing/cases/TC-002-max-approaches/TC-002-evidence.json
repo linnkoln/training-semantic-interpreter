@@ -1,0 +1,462 @@
+{
+  "caseId": "TC-002",
+  "runId": "TC-002-run-014",
+  "executedAt": "2026-09-23T04:24:15.189Z",
+  "runtime": {
+    "endpoint": "local Ollama-compatible API (localhost:11434)",
+    "modelId": "gemma4",
+    "underlyingModelRevision": "not reported by the endpoint"
+  },
+  "promptVersions": {
+    "cutter": "1",
+    "router": "23",
+    "ruleUpdate": "4",
+    "structured": "4"
+  },
+  "input": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+  "initialRules": "TC-001 saved rule_001, version 3, seven examples; graph with two A+B relations",
+  "llmCalls": [
+    {
+      "index": 0,
+      "stage": "cutter",
+      "model": "gemma4",
+      "promptVersion": "1",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"days\": [\n      { \"raw\": \"*07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14)\", \"date\": \"07-17\" },\n      { \"raw\": \"*07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0)\", \"date\": \"07-19\" },\n      { \"raw\": \"*07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6\", \"date\": \"07-21\" }\n    ]\n  },\n  \"confidence\": 1.0\n}\n```"
+    },
+    {
+      "index": 1,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "23",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*07-17*\\n- 100 пресс\\n- 100 присяд\\n- 100 отжимания (100+0)\\n~10км\\n- 50 подтягивания (36+14)\",\n        \"group\": 1,\n        \"ruleId\": \"rule_001\",\n        \"reasoning\": \"Все зафиксированные показатели (пресс, присяды, отжимания со split, бег, подтягивания со split) полностью соответствуют формату и ключевым измерениям, представленным в примере правила rule_001. Нет ни новых измерений, ни новых типов данных.\",\n        \"confidence\": 0.99\n      }\n    ]\n  },\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "index": 2,
+      "stage": "structured",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": [\n    {\n      \"date\": \"2026-07-17\",\n      \"values\": {\n        \"press_reps\": 100,\n        \"squat_reps\": 100,\n        \"push_reps\": 100,\n        \"running_distance_km\": 10,\n        \"pull_reps\": 36,\n        \"pull_rings_reps\": 14\n      }\n    }\n  ],\n  \"roles\": {\n    \"pull_rings_reps\": \"overlay\",\n    \"pull_reps\": \"stack\"\n  },\n  \"confidence\": 0.98\n}\n```"
+    },
+    {
+      "index": 3,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "23",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*07-19*\\n- 100 пресс\\n- 100 присяд\\n- 100 отжимания (100+0)\\n~10км\\n- 50 подтягивания (50+0)\",\n        \"group\": 1,\n        \"ruleId\": \"rule_001\",\n        \"reasoning\": \"Все измеряемые показатели (пресс, присяд, отжимания, бег, подтягивания) соответствуют структуре и формату, представленным в примерах правила rule_001. Изменение числовых значений (100 вместо 50) и специфические комбинации (100+0) не меняют группу и не требуют нового ключа.\",\n        \"confidence\": 0.99\n      }\n    ]\n  },\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "index": 4,
+      "stage": "structured",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": [\n    {\n      \"date\": \"2026-07-19\",\n      \"values\": {\n        \"press_reps\": 100,\n        \"squat_reps\": 100,\n        \"push_reps\": 100,\n        \"running_distance_km\": 10,\n        \"pull_reps\": 50\n      }\n    }\n  ],\n  \"roles\": {},\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "index": 5,
+      "stage": "router",
+      "model": "gemma4",
+      "promptVersion": "23",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"groups\": [\n      {\n        \"chunk\": \"*07-21*\\n- 100 пресс\\n- 100 присяд\\n- 100 отжимания (макс подход: 32)\\n~10км\\n- 50 подтягивания макс: 6\",\n        \"group\": 3,\n        \"ruleId\": null,\n        \"reasoning\": \"Наблюдается несколько измеряемых строк, которые вводят новые типы измерений или контекст. Измерение отжиманий задано в формате 'макс подход: 32', а подтягивания — в формате 'макс: 6'. Это изменение типа измерения (фокус на максимальном подходе/сетах) не покрывается существующими примерами правил, что требует назначения Группы 3.\",\n        \"confidence\": 0.99\n      }\n    ]\n  },\n  \"confidence\": 0.99\n}\n```"
+    },
+    {
+      "index": 6,
+      "stage": "ruleUpdate",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": {\n    \"updateRuleId\": \"rule_001\",\n    \"rule\": {\n      \"keys\": [\n        {\n          \"key\": \"push_max_set\",\n          \"role\": \"overlay\",\n          \"meaning\": \"отжимания, максимальное количество повторений в подходе\"\n        },\n        {\n          \"key\": \"pull_max_set\",\n          \"role\": \"overlay\",\n          \"meaning\": \"подтягивания, максимальное количество повторений в подходе\"\n        }\n      ],\n      \"composition\": \"single\"\n    },\n    \"oldKeysEvents\": [\n      {\n        \"key\": \"press_reps\",\n        \"chunk\": \"- 100 пресс\",\n        \"date\": \"07-21\",\n        \"values\": {\n          \"press_reps\": 100\n        }\n      },\n      {\n        \"key\": \"squat_reps\",\n        \"chunk\": \"- 100 присяд\",\n        \"date\": \"07-21\",\n        \"values\": {\n          \"squat_reps\": 100\n        }\n      },\n      {\n        \"key\": \"running_distance_km\",\n        \"chunk\": \"~10км\",\n        \"date\": \"07-21\",\n        \"values\": {\n          \"running_distance_km\": 10\n        }\n      }\n    ],\n    \"newKeys\": [\n      {\n        \"key\": \"push_max_set\",\n        \"meaning\": \"отжимания, максимальное количество повторений в подходе\",\n        \"chunk\": \"- 100 отжимания (макс подход: 32)\",\n        \"values\": {\n          \"push_max_set\": 32\n        }\n      },\n      {\n        \"key\": \"pull_max_set\",\n        \"meaning\": \"подтягивания, максимальное количество повторений в подходе\",\n        \"chunk\": \"- 50 подтягивания макс: 6\",\n        \"values\": {\n          \"pull_max_set\": 6\n        }\n      }\n    ],\n    \"relations\": [\n      {\n        \"type\": \"overlay\",\n        \"base\": \"push_reps\",\n        \"sub\": \"push_max_set\"\n      },\n      {\n        \"type\": \"overlay\",\n        \"base\": \"pull_reps\",\n        \"sub\": \"pull_max_set\"\n      }\n    ],\n    \"confidence\": 0.99\n  }\n}\n```"
+    },
+    {
+      "index": 7,
+      "stage": "structured",
+      "model": "gemma4",
+      "promptVersion": "4",
+      "response": "```json\n{\n  \"status\": \"success\",\n  \"payload\": [\n    {\n      \"date\": \"2026-07-21\",\n      \"values\": {\n        \"press_reps\": 100,\n        \"squat_reps\": 100,\n        \"push_reps\": 100,\n        \"running_distance_km\": 10,\n        \"pull_reps\": 50\n      }\n    }\n  ],\n  \"roles\": {},\n  \"confidence\": 0.98\n}\n```"
+    }
+  ],
+  "preview": {
+    "status": "success",
+    "branch": 1,
+    "payload": {
+      "groups": [
+        {
+          "chunk": "*07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14)",
+          "group": 1
+        },
+        {
+          "chunk": "*07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0)",
+          "group": 1
+        },
+        {
+          "chunk": "*07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6",
+          "group": 3
+        }
+      ],
+      "minorChunks": [],
+      "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+      "newKeys": [],
+      "events": [
+        {
+          "date": "2026-07-17",
+          "values": {
+            "press_reps": 100,
+            "squat_reps": 100,
+            "push_reps": 100,
+            "running_distance_km": 10,
+            "pull_reps": 36,
+            "pull_rings_reps": 14
+          },
+          "interpretation_version": 3,
+          "createdAt": "2026-09-23T04:23:21.378Z"
+        },
+        {
+          "date": "2026-07-19",
+          "values": {
+            "press_reps": 100,
+            "squat_reps": 100,
+            "push_reps": 100,
+            "running_distance_km": 10,
+            "pull_reps": 50
+          },
+          "interpretation_version": 3,
+          "createdAt": "2026-09-23T04:23:41.162Z"
+        },
+        {
+          "date": "2026-07-21",
+          "values": {
+            "press_reps": 100,
+            "squat_reps": 100,
+            "push_reps": 100,
+            "running_distance_km": 10,
+            "pull_reps": 50,
+            "push_max_set": 32,
+            "pull_max_set": 6
+          },
+          "interpretation_version": 3,
+          "createdAt": "2026-09-23T04:24:15.182Z"
+        }
+      ],
+      "rule": {
+        "id": "rule_001",
+        "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+        "mapping": {
+          "push_max_set": "отжимания, максимальное количество повторений в подходе",
+          "pull_max_set": "подтягивания, максимальное количество повторений в подходе"
+        },
+        "examples": [
+          {
+            "input": "- 100 отжимания (макс подход: 32)",
+            "values": {
+              "push_max_set": 32
+            }
+          },
+          {
+            "input": "- 50 подтягивания макс: 6",
+            "values": {
+              "pull_max_set": 6
+            }
+          }
+        ]
+      },
+      "rules": [
+        {
+          "id": "rule_001",
+          "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+          "mapping": {
+            "push_max_set": "отжимания, максимальное количество повторений в подходе",
+            "pull_max_set": "подтягивания, максимальное количество повторений в подходе"
+          },
+          "examples": [
+            {
+              "input": "- 100 отжимания (макс подход: 32)",
+              "values": {
+                "push_max_set": 32
+              }
+            },
+            {
+              "input": "- 50 подтягивания макс: 6",
+              "values": {
+                "pull_max_set": 6
+              }
+            }
+          ]
+        }
+      ],
+      "exampleEvents": [
+        {
+          "date": "2026-07-21",
+          "values": {
+            "push_max_set": 32,
+            "pull_max_set": 6
+          },
+          "interpretation_version": 4,
+          "createdAt": "2026-09-23T04:24:03.056Z"
+        }
+      ],
+      "proposal": {
+        "rules": [
+          {
+            "id": "rule_001",
+            "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+            "mapping": {
+              "push_max_set": "отжимания, максимальное количество повторений в подходе",
+              "pull_max_set": "подтягивания, максимальное количество повторений в подходе"
+            },
+            "examples": [
+              {
+                "input": "- 100 отжимания (макс подход: 32)",
+                "values": {
+                  "push_max_set": 32
+                }
+              },
+              {
+                "input": "- 50 подтягивания макс: 6",
+                "values": {
+                  "pull_max_set": 6
+                }
+              }
+            ]
+          }
+        ],
+        "rule": {
+          "id": "rule_001",
+          "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+          "mapping": {
+            "push_max_set": "отжимания, максимальное количество повторений в подходе",
+            "pull_max_set": "подтягивания, максимальное количество повторений в подходе"
+          },
+          "examples": [
+            {
+              "input": "- 100 отжимания (макс подход: 32)",
+              "values": {
+                "push_max_set": 32
+              }
+            },
+            {
+              "input": "- 50 подтягивания макс: 6",
+              "values": {
+                "pull_max_set": 6
+              }
+            }
+          ]
+        },
+        "exampleEvents": [
+          {
+            "date": "2026-07-21",
+            "values": {
+              "push_max_set": 32,
+              "pull_max_set": 6
+            },
+            "interpretation_version": 4,
+            "createdAt": "2026-09-23T04:24:03.056Z"
+          }
+        ],
+        "oldKeysEvents": [
+          {
+            "key": "press_reps",
+            "chunk": "- 100 пресс",
+            "date": "07-21",
+            "values": {
+              "press_reps": 100
+            }
+          },
+          {
+            "key": "squat_reps",
+            "chunk": "- 100 присяд",
+            "date": "07-21",
+            "values": {
+              "squat_reps": 100
+            }
+          },
+          {
+            "key": "running_distance_km",
+            "chunk": "~10км",
+            "date": "07-21",
+            "values": {
+              "running_distance_km": 10
+            }
+          }
+        ],
+        "oldChunks": [
+          "- 100 пресс",
+          "- 100 присяд",
+          "~10км"
+        ],
+        "newKeys": [
+          {
+            "key": "push_max_set",
+            "meaning": "отжимания, максимальное количество повторений в подходе",
+            "chunk": "- 100 отжимания (макс подход: 32)",
+            "values": {
+              "push_max_set": 32
+            }
+          },
+          {
+            "key": "pull_max_set",
+            "meaning": "подтягивания, максимальное количество повторений в подходе",
+            "chunk": "- 50 подтягивания макс: 6",
+            "values": {
+              "pull_max_set": 6
+            }
+          }
+        ],
+        "relations": [
+          {
+            "type": "overlay",
+            "base": "push_reps",
+            "sub": "push_max_set"
+          },
+          {
+            "type": "overlay",
+            "base": "pull_reps",
+            "sub": "pull_max_set"
+          }
+        ],
+        "updateRuleId": "rule_001"
+      },
+      "relations": [
+        {
+          "type": "overlay",
+          "base": "push_reps",
+          "sub": "push_max_set"
+        },
+        {
+          "type": "overlay",
+          "base": "pull_reps",
+          "sub": "pull_max_set"
+        }
+      ],
+      "_traceId": "trace-1790137373894"
+    },
+    "confidence": 1
+  },
+  "saveVerification": {
+    "status": null,
+    "logVersion": 4,
+    "rule": {
+      "id": "rule_001",
+      "raw": "| *07-17*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (36+14) | *07-19*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (100+0)<br>~10км<br>- 50 подтягивания (50+0) | *07-21*<br>- 100 пресс<br>- 100 присяд<br>- 100 отжимания (макс подход: 32)<br>~10км<br>- 50 подтягивания макс: 6 |",
+      "mapping": {
+        "press_reps": "пресс, повторения",
+        "squat_reps": "присяд, повторения",
+        "push_reps": "отжимания, стандартные повторения",
+        "push_knees_reps": "отжимания с колен, повторения",
+        "running_distance_km": "бег, дистанция в км",
+        "pull_reps": "подтягивания, базовые повторения",
+        "pull_rings_reps": "подтягивания на кольцах, повторения",
+        "push_max_set": "отжимания, максимальное количество повторений в подходе",
+        "pull_max_set": "подтягивания, максимальное количество повторений в подходе"
+      },
+      "examples": [
+        {
+          "input": "- 50 пресс",
+          "values": {
+            "press_reps": 50
+          }
+        },
+        {
+          "input": "- 50 присяд",
+          "values": {
+            "squat_reps": 50
+          }
+        },
+        {
+          "input": "- 50 отжимания (+из них около 30 с колен(20+30))",
+          "values": {
+            "push_reps": 20,
+            "push_knees_reps": 30
+          }
+        },
+        {
+          "input": "~5км",
+          "values": {
+            "running_distance_km": 5
+          }
+        },
+        {
+          "input": "- 25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20)))",
+          "values": {
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          }
+        },
+        {
+          "input": "- 50 отжимания (10+40)",
+          "values": {
+            "push_reps": 10,
+            "push_knees_reps": 40
+          }
+        },
+        {
+          "input": "- 25 подтягивания (3 + 22)",
+          "values": {
+            "pull_reps": 3,
+            "pull_rings_reps": 22
+          }
+        },
+        {
+          "input": "- 100 отжимания (макс подход: 32)",
+          "values": {
+            "push_max_set": 32
+          }
+        },
+        {
+          "input": "- 50 подтягивания макс: 6",
+          "values": {
+            "pull_max_set": 6
+          }
+        }
+      ],
+      "__version": 2
+    },
+    "graph": {
+      "relations": [
+        {
+          "type": "A+B",
+          "base": "push_reps",
+          "parts": [
+            "push_knees_reps"
+          ],
+          "stackOrder": [
+            "push_reps",
+            "push_knees_reps"
+          ]
+        },
+        {
+          "type": "A+B",
+          "base": "pull_reps",
+          "parts": [
+            "pull_rings_reps"
+          ],
+          "stackOrder": [
+            "pull_reps",
+            "pull_rings_reps"
+          ]
+        },
+        {
+          "type": "overlay",
+          "base": "push_reps",
+          "sub": "push_max_set"
+        },
+        {
+          "type": "overlay",
+          "base": "pull_reps",
+          "sub": "pull_max_set"
+        }
+      ],
+      "targets": [
+        "push_max_set",
+        "pull_max_set"
+      ],
+      "trends": []
+    },
+    "rulesTmpAfterUiClear": {
+      "newKeys": []
+    },
+    "graphTmpAfterUiClear": {
+      "relations": [],
+      "targets": [],
+      "trends": []
+    },
+    "note": "Node sandbox; main files and the UI post-save temporary clear were verified in an isolated copy, not in a live Obsidian vault."
+  }
+}

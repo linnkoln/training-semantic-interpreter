@@ -1,0 +1,162 @@
+{
+  "rules": [
+    {
+      "version": 1,
+      "createdAt": "2026-09-23T04:11:52.403Z",
+      "updatedAt": "2026-09-23T04:11:52.403Z",
+      "mapping": {
+        "press_reps": "пресс",
+        "squat_reps": "присяд",
+        "push_reps": "отжимания обычные",
+        "push_knees_reps": "отжимания с колен",
+        "running_distance_km": "бег, км",
+        "pull_reps": "подтягивания обычные",
+        "pull_rings_reps": "подтягивания на кольцах"
+      },
+      "examples": [
+        {
+          "input": "50 пресс",
+          "values": {
+            "press_reps": 50
+          }
+        },
+        {
+          "input": "50 присяд",
+          "values": {
+            "squat_reps": 50
+          }
+        },
+        {
+          "input": "50 отжимания (+из них около 30 с колен(20+30))",
+          "values": {
+            "push_reps": 20,
+            "push_knees_reps": 30
+          }
+        },
+        {
+          "input": "~5км",
+          "values": {
+            "running_distance_km": 5
+          }
+        },
+        {
+          "input": "25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))",
+          "values": {
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          }
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "createdAt": "2026-09-23T04:11:52.403Z",
+      "updatedAt": "2026-09-23T04:12:28.802Z",
+      "mapping": {
+        "press_reps": "пресс",
+        "squat_reps": "присяд",
+        "push_reps": "отжимания обычные",
+        "push_knees_reps": "отжимания с колен",
+        "running_distance_km": "бег, км",
+        "pull_reps": "подтягивания обычные",
+        "pull_rings_reps": "подтягивания на кольцах"
+      },
+      "examples": [
+        {
+          "input": "50 пресс",
+          "values": {
+            "press_reps": 50
+          }
+        },
+        {
+          "input": "50 присяд",
+          "values": {
+            "squat_reps": 50
+          }
+        },
+        {
+          "input": "50 отжимания (+из них около 30 с колен(20+30))",
+          "values": {
+            "push_reps": 20,
+            "push_knees_reps": 30
+          }
+        },
+        {
+          "input": "~5км",
+          "values": {
+            "running_distance_km": 5
+          }
+        },
+        {
+          "input": "25 подтягивания (+из них около 20 австралийскими отжиманиями на кольцах (5+20))",
+          "values": {
+            "pull_reps": 5,
+            "pull_rings_reps": 20
+          }
+        },
+        {
+          "input": "50 отжимания (10+40)",
+          "values": {
+            "push_reps": 10,
+            "push_knees_reps": 40
+          }
+        },
+        {
+          "input": "25 подтягивания (3 + 22)",
+          "values": {
+            "pull_reps": 3,
+            "pull_rings_reps": 22
+          }
+        }
+      ]
+    },
+    {
+      "version": 3,
+      "createdAt": "2026-09-23T04:11:52.403Z",
+      "updatedAt": "2026-09-23T04:24:15.189Z",
+      "mapping": {
+        "press_reps": "пресс",
+        "squat_reps": "присяд",
+        "push_reps": "отжимания",
+        "running_distance_km": "бег, км",
+        "push_max_set": "максимальный подход отжиманий",
+        "pull_reps": "подтягивания",
+        "pull_max_set": "максимальный подход подтягиваний"
+      },
+      "examples": [
+        {
+          "input": "100 пресс",
+          "values": {
+            "press_reps": 100
+          }
+        },
+        {
+          "input": "100 присяд",
+          "values": {
+            "squat_reps": 100
+          }
+        },
+        {
+          "input": "100 отжимания (макс подход: 32)",
+          "values": {
+            "push_reps": 100,
+            "push_max_set": 32
+          }
+        },
+        {
+          "input": "~10км",
+          "values": {
+            "running_distance_km": 10
+          }
+        },
+        {
+          "input": "50 подтягивания макс: 6",
+          "values": {
+            "pull_reps": 50,
+            "pull_max_set": 6
+          }
+        }
+      ]
+    }
+  ]
+}
